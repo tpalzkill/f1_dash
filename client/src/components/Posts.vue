@@ -1,3 +1,4 @@
+
 <template>
   <div class="posts">
     <section class="section">
@@ -24,11 +25,6 @@
                       <p class="heading"><b>Fastest Lap:</b> &nbsp; {{posts.fastestLapHolder}} &nbsp; <b>|</b> &nbsp; Time: {{posts.fastestLapTime}} &nbsp; <b>|</b> &nbsp;
                       Lap: {{posts.fastestLap}} &nbsp; <b>|</b> &nbsp; Team: {{posts.fastLapConstructor}}
                       </p>
-                    </div>
-                  </div>
-                  <div class="level-item has-text-centered">
-                    <div>
-                      <p class="heading"><b>Conditions:</b></p>
                     </div>
                   </div>
                 </div>
@@ -83,12 +79,16 @@
               <p class="heading">
                 Results
               </p>
-              <div class="tile is-ancestor">
+              <div class="tile is-ancestor flow">
                 <div class="tile is-parent">
+                  <div class="container">
+
+
                   <div class="tile is-child box">
+                  <div class="tile is-child scroll">
 
                     <div class="content">
-                      <table class="table is-striped is-bordered">
+                      <table class="table is-striped is-bordered ">
                         <thead>
                           <tr>
                             <th>Pos</th>
@@ -100,6 +100,7 @@
                             <th>Pts</th>
                           </tr>
                         </thead>
+
                         <tbody>
                           <tr v-for="driver in posts.drivers">
                             <td >{{driver.position}}</td>
@@ -114,18 +115,21 @@
                         </tbody>
                       </table>
                     </div>
+                    </div>
+                  </div>
                   </div>
                 </div>
               </div>
               <p class="heading">
                 Qualifying
               </p>
-              <div class="tile is-ancestor">
+              <div class="tile is-ancestor scrollbox">
                 <div class="tile is-parent">
                   <div class="tile is-child box">
+                  <div class="tile is-child scroll">
 
                     <div class="content">
-                      <table class="table is-striped is-bordered">
+                      <table class="table is-striped is-bordered scrollbox">
                         <thead>
                           <tr>
                             <th>Pos</th>
@@ -137,7 +141,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr v-for="driver in posts.qualReults">
+                          <tr v-for="driver in posts.qualResults">
                             <td >{{driver.position}}</td>
                             <td>{{driver.number}}</td>
                             <td>{{driver.Driver.givenName}} {{driver.Driver.familyName}}</td>
@@ -148,42 +152,11 @@
                         </tbody>
                       </table>
                     </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </article>
-          </div>
-        </div>
-        <div class="tile is-ancestor">
-          <div class="tile is-parent">
-            <div class="tile is-child box">
-              <p class="title">Next Grand Prix</p>
-              <p class="subtitle">Circuit Name</p>
-              <nav class="level">
-                <div class="level-left">
-                  <div class="level-item has-text-centered">
-                    <div>
-                      <p class="heading">Date:</p>
-                    </div>
-                  </div>
-                  <div class="level-item has-text-centered">
-                    <div>
-                      <p class="heading">Pole-Sitter:</p>
-                    </div>
-                  </div>
-                  <div class="level-item has-text-centered">
-                    <div>
-                      <b></b><p class="heading">Fastest Lap:</p></b>
-                    </div>
-                  </div>
-                  <div class="level-item has-text-centered">
-                    <div>
-                      <b><p class="heading">Conditions:</p></b>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-            </div>
           </div>
         </div>
       </div>
@@ -216,13 +189,23 @@ export default {
 </script>
 
 <style scoped>
-
 body {
   margin: 0px;
 }
 
+
 p {
   display: flex;
   justify-content: flex-start;
+}
+
+.flow {
+  max-height: 45%;
+  overflow-y: hidden;
+}
+
+.scroll {
+  max-height: 30em;
+  overflow: scroll;
 }
 </style>

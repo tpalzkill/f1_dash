@@ -27,10 +27,11 @@ getRaceData = function() {
     raceObject.first = latestRace.Results[0];
     raceObject.second = latestRace.Results[1];
     raceObject.third = latestRace.Results[2];
-
+// necessary?
     return
   })
 };
+
 getQualsData = function() {
   return request({
     method: 'GET',
@@ -38,13 +39,14 @@ getQualsData = function() {
   }).then(function(response) {
     let raceData = JSON.parse(response);
     let latestRace = raceData.MRData.RaceTable.Races[0];
+    // console.log(latestRace);
     let poleFirst = latestRace.QualifyingResults[0].Driver.givenName;
     let poleLast = latestRace.QualifyingResults[0].Driver.familyName;
     raceObject.polesitter = poleFirst + " " + poleLast;
-    raceObject.qualReults = latestRace.QualifyingResults;
-
+    raceObject.qualResults = latestRace.QualifyingResults
   })
 };
+
 getFastestLap = function() {
   return request({
     method: 'GET',
@@ -87,7 +89,7 @@ app.get('/posts', (req, res) => {
         avgSpeed : raceObject.avgSpeed,
         fastLapConstructor : raceObject.fastLapConstructor,
         polesitter : raceObject.polesitter,
-        qualReults : raceObject.qualReults,
+        qualResults : raceObject.qualResults
       })
     })
 })
